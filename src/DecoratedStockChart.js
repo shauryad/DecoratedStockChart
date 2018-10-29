@@ -310,7 +310,9 @@
                         addCustomBenchmark: function (customBenchmark) {
                             scope.alerts.customBenchmark.messages = [];
 
-                            var addedBenchmark = JSON.parse(JSON.stringify(customBenchmark));
+                            var addedBenchmarkString = JSON.stringify(customBenchmark);
+                            var addedBenchmark = JSON.parse(addedBenchmarkString);
+
                             const result = scope.onCustomBenchmarkSelect({
                                 customBenchmark: addedBenchmark,
                                 options: {dateRange: scope.states.dateRange}
@@ -350,7 +352,7 @@
                                     scope.states.chart.hideLoading();
                                     var needToAdd = true;
                                     for (idx in scope.states.customBenchmarks) {
-                                        if (JSON.stringify(addedBenchmark) === JSON.stringify(scope.states.customBenchmarks[idx])) {
+                                        if (addedBenchmarkString === JSON.stringify(scope.states.customBenchmarks[idx])) {
                                             needToAdd = false;
                                             break;
                                         }
