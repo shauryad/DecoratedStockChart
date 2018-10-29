@@ -348,8 +348,12 @@
                                         scope.addSeries(series);
                                     scope.isProcessing = false;
                                     scope.states.chart.hideLoading();
-                                    if (scope.states.customBenchmarks.indexOf(addedBenchmark) === -1)
-                                        scope.states.customBenchmarks.push(addedBenchmark);
+                                    for (idx in scope.states.customBenchmarks) {
+                                        if (JSON.stringify(addedBenchmark) === JSON.stringify(scope.states.customBenchmarks[idx])) {
+                                            scope.states.customBenchmarks.push(addedBenchmark);
+                                            break;
+                                        }
+                                    }
                                 }
                             }
 
