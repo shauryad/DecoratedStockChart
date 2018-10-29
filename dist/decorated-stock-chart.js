@@ -312,7 +312,7 @@
 
                             var addedBenchmark = JSON.parse(JSON.stringify(customBenchmark));
                             const result = scope.onCustomBenchmarkSelect({
-                                customBenchmark: addedBenchmark,
+                                customBenchmark: customBenchmark,
                                 options: {dateRange: scope.states.dateRange}
                             });
 
