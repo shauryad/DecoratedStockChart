@@ -339,13 +339,18 @@
                                  * instruction on how to properly remove the series
                                  */
                                 series.onRemove = function () {
-                                    scope.states.customBenchmarks.splice(scope.states.customBenchmarks.indexOf(addedBenchmark), 1);
+                                    var idxToRemove = -1;
+                                    for (idx in scope.states.customBenchmarks) {
+                                        if (addedBenchmarkString === JSON.stringify(scope.states.customBenchmarks[idx])) {
+                                            idxToRemove = idx;
+                                            break;
+                                        }
+                                    }
+                                    scope.states.customBenchmarks.splice(idxToRemove, 1);
                                     dsc.removeSeriesById(series.id, scope);
                                 };
 
                                     // Update the data it if it already exists
-
-									console.log(scope.states.chart.customBenchmarks);
                                     if (scope.states.chart.get(series.id)) {
 										scope.states.chart.get(series.id).setData(series.data);
 									}
@@ -355,15 +360,6 @@
 									}
                                     scope.isProcessing = false;
                                     scope.states.chart.hideLoading();
-//                                    var needToAdd = true;
-//                                    for (idx in scope.states.customBenchmarks) {
-//                                        if (addedBenchmarkString === JSON.stringify(scope.states.customBenchmarks[idx])) {
-//                                            needToAdd = false;
-//                                            break;
-//                                        }
-//                                    }
-//                                    if (needToAdd)
-//                                        scope.states.customBenchmarks.push(addedBenchmark);
                                 }
                             }
 
