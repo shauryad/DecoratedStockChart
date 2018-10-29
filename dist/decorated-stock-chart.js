@@ -312,7 +312,7 @@
 
                             var addedBenchmark = JSON.parse(JSON.stringify(customBenchmark));
                             const result = scope.onCustomBenchmarkSelect({
-                                customBenchmark: customBenchmark,
+                                customBenchmark: addedBenchmark,
                                 options: {dateRange: scope.states.dateRange}
                             });
 
@@ -348,8 +348,8 @@
                                         scope.addSeries(series);
                                     scope.isProcessing = false;
                                     scope.states.chart.hideLoading();
-                                    if (scope.states.customBenchmarks.indexOf(addedBenchmark) === -1)
-                                        scope.states.customBenchmarks.push(addedBenchmark);
+                                    if (scope.states.customBenchmarks.indexOf(customBenchmark) === -1)
+                                        scope.states.customBenchmarks.push(customBenchmark);
                                 }
                             }
 
