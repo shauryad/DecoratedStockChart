@@ -348,12 +348,15 @@
                                         scope.addSeries(series);
                                     scope.isProcessing = false;
                                     scope.states.chart.hideLoading();
+                                    var needToAdd = true;
                                     for (idx in scope.states.customBenchmarks) {
                                         if (JSON.stringify(addedBenchmark) === JSON.stringify(scope.states.customBenchmarks[idx])) {
-                                            scope.states.customBenchmarks.push(addedBenchmark);
+                                            needToAdd = false;
                                             break;
                                         }
                                     }
+                                    if (needToAdd)
+                                        scope.states.customBenchmarks.push(addedBenchmark);
                                 }
                             }
 
